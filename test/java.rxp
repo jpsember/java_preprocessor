@@ -1,0 +1,134 @@
+
+WS [\$01-\$20^\$0a]+
+CR \$0a
+//COMMENTML (  /\*    /?   \
+//                 (  [\$00-\$7f ^\* ^/]/?  |  \*  )*   \
+//                  \*/ )
+
+COMMENTML (  /\*    ( ([\$00-\$7f ^\*] | \** [\$00-\$7f^\*^/]+ )*) \** \*/ )
+
+
+COMMENTSL (/\/[\$00-\$7f^\$0a]*)
+
+
+// keywords
+'abstract
+'assert
+'boolean
+'break
+'byte
+'case
+'catch
+'char
+'class
+'const
+'continue
+'default
+'do
+'double
+'else
+'enum
+'extends
+'final
+'finally
+'float
+'for
+'goto
+'if
+'implements
+'import
+'instanceof
+'int
+'interface
+'long
+'native
+'new
+'package
+'private
+'protected
+'public
+'return
+'short
+'static
+'strictfp
+'super
+'switch
+'synchronized
+'this
+'throw
+'throws
+'transient
+'try
+'void
+'volatileche
+'while
+
+// Operator and punctuation tokens
+BROP {
+BRCL }
+SQOP \[
+SQCL \]
+COMMA ,
+SEMI ;
+PROP \(
+PRCL \)
+ASSIGN =
+MINUS \-
+NOT !
+PLUS \+
+MUL \*
+DIV /
+TERNARY \?
+
+BTOR \|
+BTAND \&
+BTNOT \~
+BTXOR \^
+
+
+SL <<
+SR >>
+LT <
+GT >
+LE <=
+GE >=
+EQ ==
+NE !=
+AND &&
+OR \|\|
+MOD %
+DOT .
+COLON :
+
+// integers (assignment #3: removed unary +,-
+// includes hex constants
+INTCONST  ( ([0-9]+|0(x|x)[0-9a-fA-F]+)  \
+            )
+     
+
+// integers (assignment #3: removed unary +,-
+// includes hex constants
+FPCONST  (   ( ([0-9]+) (e|E) (\- | \+)? ([0-9]+))  \
+           | ([0-9]* .? [0-9]+ (f|F)? )  )
+     
+
+// identifiers (this includes keywords)
+// now includes annotations (identifiers starting with '@')
+ID \@?[_a-zA-Z][_a-zA-Z0-9]*
+
+// strings
+//  [] nonprintables are not allowed
+//  [] allows any character to be escaped; escape sequences
+//			will be examined for legality by parser
+//
+// Don't allow unescaped \, "  or  \, '
+STRCONST  (                                            \
+             " (      [\$01-\$7f^\$0a^\$22^\$5c] \ 
+                | \\[\$20-\$7f]                   			\
+           )* "                                  			\
+       |   ' (      [\$01-\$7f^\$0a^\$27^\$5c]  		\
+                | \\[\$20-\$7f]                  			\
+           )* ' )
+       
+
+

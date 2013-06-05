@@ -1,0 +1,40 @@
+// jpp.rxp : java preprocessor tokens
+//
+
+
+WHITESPACE (                            \
+			  (#[\$00-\$7f^\$0a]*)   \
+		|   ([\$01-\$20^\$0a]+)                \
+		|   \$0a                          \
+		|   (\*)                        \
+)
+
+// Start of command
+CMDSTART !
+
+// keywords
+ENUM .enum
+ENUM2 .enum2
+PUBLIC .public
+PRIVATE .private
+PROTECTED .protected
+PACKAGE .package
+PREFIX .prefix
+WITHLENGTHS .withlengths
+
+STRS .strs
+NAME .name
+CHARS .chars
+VERBATIM .vb
+
+// integers
+INTCONST  ([0-9]+)
+
+// identifiers (this includes keywords)
+ID [_a-zA-Z][_a-zA-Z0-9]*
+
+
+STRING (  "  ( [\$00-\$7f^\$0a^"] | \\[\$20-\$7f] )* " \
+       |  '  ( [\$00-\$7f^\$0a^'] | \\[\$20-\$7f] )* ' \
+        )
+ 
