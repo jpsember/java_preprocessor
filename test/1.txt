@@ -1,0 +1,53 @@
+  aaaa // This represents code that should be copied without changing
+  bbbb
+  
+  // Generate integer constants, with public scope, starting with zero
+  /*! .enum alpha beta gamma */  //!
+  
+  cccc
+  
+  // Generate integer constants, with private scope, starting with 23;
+  // have step size at beta be 5 instead of the default 1
+  /*!  .enum 23 .private  alpha beta 5 gamma delta */ //!
+  
+	// Generate integer constants, with associated lengths (i.e. step sizes)
+  /*! .enum  27 .withlengths alpha 5 beta gamma 12 delta epsilon 3  */
+     ...this will be replaced with generated code...
+  //!
+    
+  dddd
+  eeee
+  
+  // Generate strings; parse space-delimited text and place within double quotes
+  /*! .strs alpha beta gamma delta "two words" epsilon */
+  //!
+  
+   // Generate characters; parse space-delimited text and place within single quotes
+  /*! .chars alpha beta gamma delta "two words" epsilon */
+  //!
+  
+  ffff
+  
+  // Generate string array, with particular name
+  /*! .strs 
+        .name StringName 
+        .private
+        
+        alpha beta gamma delta "two words" epsilon */
+  //!
+  
+  // Generate string representing verbatim contents 
+  // (note that program is confused if non-ASCII characters appear in the verbatim text)
+  /*! .vb  .name Gettysburgh
+			Four score and seven years ago our fathers brought forth on this continent a new nation, 
+			conceived in liberty, and dedicated to the proposition that all men are created equal.
+
+			Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived 
+			and so dedicated, can long endure. We are met on a great battlefield of that war. We have come 
+			to dedicate a portion of that field, as a final resting place for those who here gave their lives 
+			that that nation might live. It is altogether fitting and proper that we should do this.
+    */
+    //!
+  
+   gggg
+   hhhh

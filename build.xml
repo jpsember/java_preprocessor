@@ -1,0 +1,29 @@
+<project name="jpp" default="all" basedir=".">
+
+	<property name="PROJ" value="${ant.project.name}" />
+  
+	<target name="all" depends="jar" />
+
+	<patternset id="tojar">
+		<include name="**" />
+		<exclude name="**/.DS_Store" />
+		<exclude name="**/Z_*" />
+		<exclude name="**/java.policy.applet" />
+	</patternset>
+
+	<target name="jar">
+		<jar destfile="${PROJ}.jar">
+
+			<manifest>
+				<attribute name="Main-Class" value="${PROJ}.Main" />
+			</manifest>
+
+			<fileset dir="bin">
+				<patternset refid="tojar" />
+			</fileset>
+
+		</jar>
+
+  </target>
+
+</project>
